@@ -4,7 +4,7 @@
 
 ## 🎓 Software Package
 
-| ** A-Z  **  |	** Software Package** |	**** |
+| **A-Z**  |	**Software Package** |	**Project Description** |
 | ---- | ---- | ---- |
 | **A**	| ** x ** | **Ex01.html** |
 | **B**	| ** x ** | **Ex01.html** |
@@ -24,7 +24,7 @@
 | **P**	| ** x ** | **Ex01.html** |
 | **Q**	| ** x ** | **Ex01.html** |
 | **R**	| ** x ** | **Ex01.html** |
-| **S**	| **Download D3.js library** | **Ex01.html** |
+| **S**	| **SQLAlchemy ORM** | **The Python SQL Toolkit and Object Relational Mapper** |
 | **T**	| ** x ** | **Ex01.html** |
 | **U**	| ** x ** | **Ex01.html** |
 | **V**	| ** x ** | **Ex01.html** |
