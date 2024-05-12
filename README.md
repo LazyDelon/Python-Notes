@@ -24,7 +24,7 @@
 | **P**	| ** x ** | **Ex01.html** |
 | **Q**	| ** x ** | **Ex01.html** |
 | **R**	| ** x ** | **Ex01.html** |
-| **S**	| **SQLAlchemy ORM** | **The Python SQL Toolkit and Object Relational Mapper** |
+| **S**	| **SQLAlchemy ORM** | **Python SQL** |
 | **T**	| ** x ** | **Ex01.html** |
 | **U**	| ** x ** | **Ex01.html** |
 | **V**	| ** x ** | **Ex01.html** |
