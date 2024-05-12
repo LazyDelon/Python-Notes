@@ -27,6 +27,7 @@ Introduction
 SQLAlchemy is the Python SQL toolkit and Object Relational Mapper that gives application developers the full power and flexibility of SQL. SQLAlchemy provides a full suite of well known enterprise-level persistence patterns, designed for efficient and high-performing database access, adapted into a simple and Pythonic domain language.
 
 Major SQLAlchemy features include:
+===================================
 
 • An industrial strength ORM, built from the core on the identity map, unit of work, and data mapper patterns. These patterns allow transparent persistence of objects using a declarative configuration system. Domain models can be constructed and manipulated naturally, and changes are synchronized with the current transaction automatically.
 
@@ -41,6 +42,7 @@ Major SQLAlchemy features include:
 • Database introspection and generation. Database schemas can be “reflected” in one step into Python structures representing database metadata; those same structures can then generate CREATE statements right back out - all within the Core, independent of the ORM.
 
 SQLAlchemy’s philosophy:
+=========================
 
 • SQL databases behave less and less like object collections the more size and performance start to matter; object collections behave less and less like tables and rows the more abstraction starts to matter. SQLAlchemy aims to accommodate both of these principles.
 
