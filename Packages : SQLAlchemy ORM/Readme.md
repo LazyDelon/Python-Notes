@@ -27,7 +27,7 @@ $\color{red}{\textsf{Changed in version 2.0: SQLAlchemy now targets Python 3.7 a
 
 
 
-## 📣 Checking the Installed SQLAlchemy Version
+## 🎓 Checking the Installed SQLAlchemy Version
 
 **This documentation covers SQLAlchemy version 2.0. If you’re working on a system that already has SQLAlchemy installed, check the version from your Python prompt like this:**
 
@@ -38,3 +38,15 @@ sqlalchemy.__version__
 ```
 
 
+
+## 🎓 Establishing Connectivity - the Engine
+
+**The start of any SQLAlchemy application is an object called the Engine. This object acts as a central source of connections to a particular database, providing both a factory as well as a holding space called a connection pool for these database connections. The engine is typically a global object created just once for a particular database server, and is configured using a URL string which will describe how it should connect to the database host or backend.**
+
+**For this tutorial we will use an in-memory-only SQLite database. This is an easy way to test things without needing to have an actual pre-existing database set up. The Engine is created by using the create_engine() function:**
+
+```sqlalchemy version
+from sqlalchemy import create_engine
+
+engine = create_engine("sqlite+pysqlite:///:memory:", echo=True)
+```
