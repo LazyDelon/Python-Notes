@@ -1,26 +1,5 @@
 # [**SQLAlchemy 2.0 Documentation**](https://docs.sqlalchemy.org/en/20/index.html)   
 
-==========
-
-|PyPI| |Python| |Downloads|
-
-.. |PyPI| image:: https://img.shields.io/pypi/v/sqlalchemy
-    :target: https://pypi.org/project/sqlalchemy
-    :alt: PyPI
-
-.. |Python| image:: https://img.shields.io/pypi/pyversions/sqlalchemy
-    :target: https://pypi.org/project/sqlalchemy
-    :alt: PyPI - Python Version
-
-.. |Downloads| image:: https://static.pepy.tech/badge/sqlalchemy/month
-    :target: https://pepy.tech/project/sqlalchemy
-    :alt: PyPI - Downloads
-
-
-The Python SQL Toolkit and Object Relational Mapper
-
-Introduction
--------------
 
 ## 📋 Overview
 
