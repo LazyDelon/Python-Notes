@@ -50,3 +50,55 @@ from sqlalchemy import create_engine
 
 engine = create_engine("sqlite+pysqlite:///:memory:", echo=True)
 ```
+
+
+
+
+## 🎓 Working with Data
+
+**In Working with Transactions and the DBAPI, we learned the basics of how to interact with the Python DBAPI and its transactional state. Then, in Working with Database Metadata, we learned how to represent database tables, columns, and constraints within SQLAlchemy using the MetaData and related objects. In this section we will combine both concepts above to create, select and manipulate data within a relational database. Our interaction with the database is always in terms of a transaction, even if we’ve set our database driver to use autocommit behind the scenes.**
+
+**The components of this section are as follows:**
+
+**➤ &nbsp; Using INSERT Statements - to get some data into the database, we introduce and demonstrate the Core Insert construct. INSERTs from an ORM perspective are described in the next section Data Manipulation with the ORM.**
+
+**➤ &nbsp; Using SELECT Statements - this section will describe in detail the Select construct, which is the most commonly used object in SQLAlchemy. The Select construct emits SELECT statements for both Core and ORM centric applications and both use cases will be described here. Additional ORM use cases are also noted in the later section Using Relationships in Queries as well as the ORM Querying Guide.**
+
+**➤ &nbsp; Using UPDATE and DELETE Statements - Rounding out the INSERT and SELECTion of data, this section will describe from a Core perspective the use of the Update and Delete constructs. ORM-specific UPDATE and DELETE is similarly described in the Data Manipulation with the ORM section.**
+
+
+
+## 🎓 Inserting Rows using the ORM Unit of Work pattern
+
+**When using the ORM, the Session object is responsible for constructing Insert constructs and emitting them as INSERT statements within the ongoing transaction. The way we instruct the Session to do so is by adding object entries to it; the Session then makes sure these new entries will be emitted to the database when they are needed, using a process known as a flush. The overall process used by the Session to persist objects is known as the unit of work pattern.**
+
+### Instances of Classes represent Rows
+
+```Data
+>>> squidward = User(name="squidward", fullname="Squidward Tentacles")
+>>> krabs = User(name="ehkrabs", fullname="Eugene H. Krabs")
+```
+
+### Adding objects to a Session
+
+**To illustrate the addition process step by step, we will create a Session without using a context manager (and hence we must make sure we close it later!):**
+
+```Session
+session = Session(engine)
+```
+
+```Session.add
+session.add(squidward)
+session.add(krabs)
+```
+
+
+## 🎓 Committing
+
+**There’s much more to say about how the Session works which will be discussed further. For now we will commit the transaction so that we can build up knowledge on how to SELECT rows before examining more ORM behaviors and features:**
+
+```Session.commit
+session.commit()
+```
+
+
