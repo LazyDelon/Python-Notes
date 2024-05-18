@@ -145,6 +145,21 @@ class Address(Base):
 
 
 
+## 🎓 Session API
+
+### Session and sessionmaker()
+
+#### 🎓 Code A
+| **Object Name**  |	**Description** |
+| ---- | ---- |
+| **ORMExecuteState**	| **Represents a call to the [**Session.execute()**](https://docs.sqlalchemy.org/en/20/orm/session_api.html#sqlalchemy.orm.Session.execute) method, as passed to the [**SessionEvents.do_orm_execute()**](https://docs.sqlalchemy.org/en/20/orm/session_api.html#sqlalchemy.orm.Session.execute)event hook.** |
+| **Session**	| **Manages persistence operations for ORM-mapped objects.** |
+| **sessionmaker**	| **A configurable [**Session**](https://docs.sqlalchemy.org/en/20/orm/session_api.html#sqlalchemy.orm.Session) factory.** |
+| **SessionTransaction**	| **A Session-level transaction.** |
+| **SessionTransactionOrigin**	| **indicates the origin of a [**SessionTransaction**](https://docs.sqlalchemy.org/en/20/orm/session_api.html#sqlalchemy.orm.SessionTransaction).** |
+
+
+
 ## 🎓 Example
 
 ```Example
