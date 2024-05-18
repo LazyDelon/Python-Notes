@@ -112,7 +112,7 @@
 #### 🎓 Code P
 | **P**  |	**Software Package** |	**Project Description** |
 | ---- | ---- | ---- |
-| **P**	| ** x ** | **Ex01.html** |
+| **P**	| **paho-mqtt** | **Working on the TCP/IP protocol, it is a publish/subscribe messaging protocol designed for remote devices with low hardware performance and poor network conditions.** |
 
 ---
  
@@ -133,7 +133,7 @@
 #### 🎓 Code S
 | **S**  |	**Software Package** |	**Project Description** |
 | ---- | ---- | ---- |
-| **S**	| **SQLAlchemy ORM** | **Python SQL** |
+| **S**	| **SQLAlchemy ORM** | **SQLAlchemy is a Python Library for interacting with relational databases.** |
 
 ---
  
