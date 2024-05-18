@@ -1,6 +1,6 @@
 # ERROR MESSAGES
 
-## 🎓 1. &nbsp; connection to sql server freeze
+## 🎓 1. &nbsp; The connection between pymysql and sql server is frozen
 
 
 ### Describe the bug
@@ -18,11 +18,13 @@ Connection = engine.connect()
 
 
 ### Expected behavior
-**connect to sql server**
+
+**$\color{orange}{\textsf{connect to sql server.}$**
 
 
 ### Current Behavior
-**freeze on connection line**
+
+**$\color{orange}{\textsf{freeze on connection line.}}$**
 
 
 ### Context (Environment)
