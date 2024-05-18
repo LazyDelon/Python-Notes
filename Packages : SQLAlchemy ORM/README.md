@@ -159,7 +159,7 @@ class Address(Base):
 
 
 
-### A configurable Session factory.
+#### A configurable Session factory.
 
 **The sessionmaker factory generates new Session objects when called, creating them given the configurational arguments established here.**
 
@@ -207,7 +207,7 @@ with Session.begin() as session:
 # commits transaction, closes session
 ```
 
-### 🎓 New in version 1.4.
+#### 🎓 New in version 1.4.
 
 **When calling upon sessionmaker to construct a Session, keyword arguments may also be passed to the method; these arguments will override that of the globally configured parameters. Below we use a sessionmaker bound to a certain Engine to produce a Session that is instead bound to a specific Connection procured from that engine:**
 
