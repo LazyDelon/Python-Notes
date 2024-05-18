@@ -143,3 +143,81 @@ class Address(Base):
         return f"Address(id={self.id!r}, email_address={self.email_address!r})"
 ```
 
+
+
+## 🎓 Example
+
+```Example
+from sqlalchemy import String
+from sqlalchemy import VARCHAR
+from sqlalchemy import Column
+from sqlalchemy import Integer
+from sqlalchemy import DECIMAL
+from sqlalchemy import DateTime
+
+from sqlalchemy import create_engine
+
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import scoped_session
+from sqlalchemy.ext.declarative import declarative_base
+
+
+Database_Connection = "mssql+pymssql://thiner:v7928Tyh@10.27.1.61:6767/KacqDB?charset=utf8"
+
+engine = create_engine(Database_Connection)
+
+Session = sessionmaker(bind=engine)
+
+con = engine.connect()
+
+db = Session()
+
+Base = declarative_base()
+
+
+
+"""----- Models -----"""
+
+class Test(Base):
+    
+    __tablename__ = '資料表名稱'
+
+    Data_ID=Column(Integer, primary_key=True, autoincrement=True)
+    pdt_time=Column(DateTime, nullable =False)         
+    pdt_type=Column(VARCHAR(30), nullable =False)  
+    No=Column(Integer, nullable =False)
+    T1=Column(DECIMAL(4,2), nullable =False)
+    T2=Column(DECIMAL(4,2), nullable =False)  
+    T3=Column(DECIMAL(4,2), nullable =False)
+
+    def __str__(self):
+        return f"Test('{self.pdt_time}', '{self.pdt_type}', '{self.No}', '{self.T1}', '{self.T2}', '{self.T3}')"
+
+    def __init__(self, pdt_time, pdt_type, No, T1, T2, T3):
+
+        self.pdt_time = pdt_time 
+        self.pdt_type = pdt_type
+        self.No = No
+        self.T1 = T1
+        self.T2 = T2
+        self.T3 = T3
+
+
+
+"""----- Insert -----"""
+
+def insert(pdt_time, pdt_type, No, T1 ,T2 ,T3):
+    
+    data = Test(pdt_time, dt_type, No, T1, T2, T3)
+
+    db.add(data)
+    
+    db.commit()
+
+
+
+if __name__ == '__main__':
+
+    insert("2024-05-08", "xx", "xx", "xx", "xx", "xx")
+    
+```
