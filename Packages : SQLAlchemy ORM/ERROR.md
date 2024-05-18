@@ -5,7 +5,7 @@
 
 ### Describe the bug
 
-**$\color{orange}{\textsf{When using pymssql version 2.2.8 ~ 3.3.0 it freeze on connection, with no error, no timeout, just hang there forever.}}$**
+**$\color{orange}{\textsf{When using pymssql version 2.2.8 - 3.3.0 it freeze on connection, with no error, no timeout, just hang there forever.}}$**
 
 
 ### To Reproduce
