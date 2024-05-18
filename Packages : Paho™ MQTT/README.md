@@ -388,4 +388,120 @@ mqttc.loop_start()
 ```
 
 
+#### The correspondence with Paho logging levels and standard ones is the following:
+
+
+| **Paho**  |	**logging** |
+| ---- | ---- | 
+| **MQTT_LOG_ERR**	| **logging.ERROR** | 
+| **MQTT_LOG_WARNING**	| **logging.WARNING** | 
+| **MQTT_LOG_NOTICE**	| **logging.INFO (no direct equivalent)** | 
+| **MQTT_LOG_INFO**	| **logging.INFO** | 
+| **MQTT_LOG_DEBUG**	| **logging.DEBUG** | 
+
+
+#### External event loop support
+
+**To support other network loop like asyncio (see examples), the library expose some method and callback to support those use-case.**
+
+**The following loop method exists:**
+
+* **loop_read: should be called when the socket is ready for reading.**
+
+* **loop_write: should be called when the socket is ready for writing AND the library want to write data.**
+
+* **loop_misc: should be called every few seconds to handle message retrying and pings.**
+
+**In pseudo code, it give the following:**
+
+```
+while run:
+    if need_read:
+        mqttc.loop_read()
+    if need_write:
+        mqttc.loop_write()
+    mqttc.loop_misc()
+
+    if not need_read and not need_write:
+        # But don't wait more than few seconds, loop_misc() need to be called regularly
+        wait_for_change_in_need_read_or_write()
+    updated_need_read_and_write()
+```
+
+
+## 🎓 Publish Example
+
+```Publish Example
+import paho.mqtt.client as mqtt
+import random
+import json  
+import datetime 
+import time
+
+# 設置日期時間的格式
+ISOTIMEFORMAT = '%m/%d %H:%M:%S'
+
+# 連線設定
+# 初始化地端程式
+client = mqtt.Client()
+
+# 設定登入帳號密碼
+client.username_pw_set("try","xxxx")
+
+# 設定連線資訊(IP, Port, 連線時間)
+client.connect("54.xxx.xxx.xxx", 1883, 60)
+
+while True:
+    t0 = random.randint(0,30)
+    t = datetime.datetime.now().strftime(ISOTIMEFORMAT)
+    payload = {'Temperature' : t0 , 'Time' : t}
+    print (json.dumps(payload))
+    #要發布的主題和內容
+    client.publish("Try/MQTT", json.dumps(payload))
+    time.sleep(5)
+```
+
+
+## 🎓 Subscribe Example
+```Subscribe Example
+
+import json
+import paho.mqtt
+import paho.mqtt.client as mqtt
+
+HOST = "10.27.x.xx"
+PORT = 8080
+USER = "user"
+PASS = "password"
+TOPIC = "主題"
+
+
+def on_connect(client, userdata, flags, reason_code): 
+    if reason_code==0: 
+        client.connected_flag=True
+        print("連線成功 代碼: ",reason_code) 
+        client.subscribe(TOPIC) 
+    else: 
+        print("連線錯誤 代碼: ",reason_code)
+
+
+def on_message(client, userdata, msg):
+    
+    messages = json.loads(msg.payload)
+    messages = messages['d']['Data']
+    print(msg.topic+" "+ messages)
+
+
+if __name__ == '__main__':
+
+    client = mqtt.Client()
+
+    client.on_connect = on_connect
+    client.on_message = on_message
+    client.username_pw_set(USER, PASS)
+    client.connect(HOST, PORT, 60)
+    client.loop_forever()
+
+```
+
 
