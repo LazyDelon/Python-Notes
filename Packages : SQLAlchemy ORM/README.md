@@ -259,7 +259,7 @@ from sqlalchemy.orm import scoped_session
 from sqlalchemy.ext.declarative import declarative_base
 
 
-Database_Connection = "mssql+pymssql://thiner:v7928Tyh@10.27.1.61:6767/KacqDB?charset=utf8"
+Database_Connection = "mssql+pymssql://User:Password@10.27.X.XX:8080/TestDB?charset=utf8"
 
 engine = create_engine(Database_Connection)
 
