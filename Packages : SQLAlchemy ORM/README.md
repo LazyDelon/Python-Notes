@@ -149,7 +149,6 @@ class Address(Base):
 
 ### Session and sessionmaker()
 
-#### 🎓 Code A
 | **Object Name**  |	**Description** |
 | ---- | ---- |
 | **ORMExecuteState**	| **Represents a call to the [**Session.execute()**](https://docs.sqlalchemy.org/en/20/orm/session_api.html#sqlalchemy.orm.Session.execute) method, as passed to the [**SessionEvents.do_orm_execute()**](https://docs.sqlalchemy.org/en/20/orm/session_api.html#sqlalchemy.orm.Session.execute)event hook.** |
@@ -157,6 +156,89 @@ class Address(Base):
 | **sessionmaker**	| **A configurable [**Session**](https://docs.sqlalchemy.org/en/20/orm/session_api.html#sqlalchemy.orm.Session) factory.** |
 | **SessionTransaction**	| **A Session-level transaction.** |
 | **SessionTransactionOrigin**	| **indicates the origin of a [**SessionTransaction**](https://docs.sqlalchemy.org/en/20/orm/session_api.html#sqlalchemy.orm.SessionTransaction).** |
+
+
+
+### A configurable Session factory.
+
+**The sessionmaker factory generates new Session objects when called, creating them given the configurational arguments established here.**
+
+```sessionmaker
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+
+# an Engine, which the Session will use for connection
+# resources
+engine = create_engine('postgresql+psycopg2://scott:tiger@localhost/')
+
+Session = sessionmaker(engine)
+
+with Session() as session:
+    session.add(some_object)
+    session.add(some_other_object)
+    session.commit()
+```
+
+
+
+
+**Context manager use is optional; otherwise, the returned Session object may be closed explicitly via the Session.close() method. Using a try:/finally: block is optional, however will ensure that the close takes place even if there are database errors:**
+
+```Session object
+session = Session()
+try:
+    session.add(some_object)
+    session.add(some_other_object)
+    session.commit()
+finally:
+    session.close()
+```
+
+
+
+**sessionmaker acts as a factory for Session objects in the same way as an Engine acts as a factory for Connection objects. In this way it also includes a sessionmaker.begin() method, that provides a context manager which both begins and commits a transaction, as well as closes out the Session when complete, rolling back the transaction if any errors occur:**
+
+```sessionmaker.begin()
+Session = sessionmaker(engine)
+
+with Session.begin() as session:
+    session.add(some_object)
+    session.add(some_other_object)
+# commits transaction, closes session
+```
+
+### 🎓 New in version 1.4.
+
+**When calling upon sessionmaker to construct a Session, keyword arguments may also be passed to the method; these arguments will override that of the globally configured parameters. Below we use a sessionmaker bound to a certain Engine to produce a Session that is instead bound to a specific Connection procured from that engine:**
+
+```
+Session = sessionmaker(engine)
+
+# bind an individual session to a connection
+
+with engine.connect() as connection:
+    with Session(bind=connection) as session:
+        # work with session
+```
+
+
+
+**The class also includes a method sessionmaker.configure(), which can be used to specify additional keyword arguments to the factory, which will take effect for subsequent Session objects generated. This is usually used to associate one or more Engine objects with an existing sessionmaker factory before it is first used:**
+
+
+```sessionmaker.configure()
+# application starts, sessionmaker does not have
+# an engine bound yet
+Session = sessionmaker()
+
+# ... later, when an engine URL is read from a configuration
+# file or other events allow the engine to be created
+engine = create_engine('sqlite:///foo.db')
+Session.configure(bind=engine)
+
+sess = Session()
+# work with session
+```
 
 
 
