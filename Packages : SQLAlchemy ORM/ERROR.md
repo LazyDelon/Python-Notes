@@ -29,9 +29,10 @@ Connection = engine.connect()
 
 * **OS : windows 10 64bit**
 * **python : 3.8.9 - 3.12.3 (both)**
-* *sqlalchemy : 2.0.3**
+* **sqlalchemy : 2.0.3**
 * **pymssql : 2.2.8 ~ 3.3.0 (both)**
 
 
 ### Additional context
-**Tried to unninstall pymssql 2.2.8 and use version 2.2.7 and it solve the problem**
+
+**$\color{red}{\textsf{Try to uninstall pymssql version 2.2.8 or above and use version 2.2.7 and solve the problem.}}$**
