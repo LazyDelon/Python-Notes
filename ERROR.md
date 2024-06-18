@@ -163,4 +163,4 @@ pip install oracledb
 &nbsp; <img src="./Images/Python.png" alt="Step"/>
 
 
-
+➤  **資料來源：** [**cx_Oracle error. DPI-1047: Cannot locate a 64-bit Oracle Client library**]([https://simplelearn.tw/python-conda-virtual-environment](https://stackoverflow.com/questions/56119490/cx-oracle-error-dpi-1047-cannot-locate-a-64-bit-oracle-client-library)/)   
