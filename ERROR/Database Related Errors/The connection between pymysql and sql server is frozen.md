@@ -1,4 +1,4 @@
-## 🎓 1. &nbsp; The connection between pymysql and sql server is frozen
+## 🎓 &nbsp; The connection between pymysql and sql server is frozen
 
 
 ### Describe the bug
